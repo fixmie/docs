@@ -19,7 +19,7 @@ provides useful tips, it also rewrites your source code and suggest the
 changes. It's up to you whether to accept these changes or to decline. 
 
 Follow the instructions after authorizing to Github on
-[https://fixmie.com](https://fixmie.com). Once the Fixmie Github application is
+[fixmie.com](https://fixmie.com).  Once the Fixmie Github application is
 installed to the specified repositories, Fixmie listens for pull requests
 events and checks each changed file in that particular pull request. 
 
@@ -58,6 +58,11 @@ language](https://golang.org):
 * `params`: 
   * Simplifies function parameters and results to omit the type if two
     consecutive types are the same (i.e: `func foo(a int, b int)` -> `func foo(a, b int)`
+* `builtins`: 
+  * Checks identifier's that shadows a predefined identifier (builtin), 
+    such as `new`, `len`, `delete`, etc...  Replaces the identifiers
+    and the local usages, i,e: `len := 5` -> `length := 5`.
+
 
 The `go` fixer ignores certain types of files and folders:
 
@@ -104,6 +109,8 @@ go:
   formats:
     disabled: true
   params:
+    disabled: true
+  builtins:
     disabled: true
 ```
 
