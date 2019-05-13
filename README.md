@@ -62,6 +62,10 @@ language](https://golang.org):
   * Checks identifier's that shadows a predefined identifier (builtin), 
     such as `new`, `len`, `delete`, etc...  Replaces the identifiers
     and the local usages, i,e: `len := 5` -> `length := 5`.
+* `times`: 
+  * Improves `time` package usages:
+	* simplifies `time.Now().Sub(t)` -> `time.Since(t)`
+	* simplifies `t.Sub(time.Now())` -> `time.Until(t)`
 
 
 The `go` fixer ignores certain types of files and folders:
@@ -111,6 +115,8 @@ go:
   params:
     disabled: true
   builtins:
+    disabled: true
+  times:
     disabled: true
 ```
 
