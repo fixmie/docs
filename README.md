@@ -37,7 +37,6 @@ The `go` fixer supports the following modes for the [Go programming
 language](https://golang.org):
 
 * `comments`: 
-  * Adds comments in form of `Foo ...` to exported types, variables, constants and functions 
   * Rewrites existing comments if first word doesn't match exported identifier
   * Rewrites existing comments first word is `Foo` to `Foo ...`
 * `errors`: 
@@ -48,6 +47,9 @@ language](https://golang.org):
 	* colon `:` 
 	* newline `\n` 
 	* exclamation marks `!`
+* `errwrap`: 
+  * Wrap and fix Go errors with the new `%w` verb directive. This fixer uses
+    the `errwrap` analyzer: https://github.com/fatih/errwrap
 * `returns`: 
   * Moves the position of an `error` return if isn't the last parameter of a
 	function declaration. I.e: `func foo() (error, int)` is replaced with `func
@@ -107,6 +109,8 @@ go:
   comments:
     disabled: true
   errors:
+    disabled: true
+  errwrap:
     disabled: true
   returns:
     disabled: true
